@@ -1,8 +1,4 @@
-
-# coding: utf-8
-
-# In[1]:
-
+#%%
 """
 Purpose:
     Rename the photos in a path with the time taken.
@@ -12,17 +8,18 @@ Author:
 
 Versions:
     20170425: Rename the photos in a path with the date_time_id.
+    20180423: Update the program. Now it is .py rather than .ipynb file.
 """
 
 import os
 import sys
 import exifread
-cwd = os.getcwd()
 import datetime
 
+# Get the current working directory.
+cwd = os.getcwd()
 
-# In[2]:
-
+#%%
 # Imput the path of the folder.
 path = input("Input path\n")
 path = r'{}'.format(path)
@@ -31,11 +28,10 @@ directory, sub_directory, file_list = list(os.walk(path))[0]
 for i in range(len(file_list)):
     file_list[i] = '{}/{}'.format(path, file_list[i])
 
-
-# In[3]:
-
+#%%
 list_name_main = []
 for file in file_list:
+    # Get the extention of file.
     extention = file.split('.')[-1]
     if extention in ['CR2', 'JPG']:
         read_photo = open(file, 'rb')
@@ -61,9 +57,3 @@ for file in file_list:
 #     print(file)
 #     print(new_name)
         os.rename(file, new_name)
-
-
-# In[ ]:
-
-
-
