@@ -1,6 +1,7 @@
+#%%
 """
 Purpose:
-    Rename the photos in a path with the time taken (to second).
+    Rename the photos in a path with the time taken.
 
 Author:
     Yuhao Zhu
@@ -10,7 +11,6 @@ Versions:
     20180423: Update the program. Now it is .py rather than .ipynb file.
 """
 
-# +
 import os
 import sys
 import exifread
@@ -18,14 +18,16 @@ import datetime
 
 # Get the current working directory.
 path = os.getcwd()
-# -
 
+#%%
+# Imput the path of the folder.
 path = r'{}'.format(path)
 path = path.replace('\\', '/')
 directory, sub_directory, file_list = list(os.walk(path))[0]
 for i in range(len(file_list)):
     file_list[i] = '{}/{}'.format(path, file_list[i])
 
+#%%
 list_name_main = []
 for file in file_list:
     # Get the extention of file.
@@ -54,5 +56,3 @@ for file in file_list:
 #     print(file)
 #     print(new_name)
         os.rename(file, new_name)
-
-
